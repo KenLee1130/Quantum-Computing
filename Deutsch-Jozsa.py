@@ -11,11 +11,13 @@ def oracle(circuit: NonParametricQuantumCircuit, n: int, is_balanced: bool):
     else:
         # Constant function (no operation needed for the oracle)
         pass
-    
+
+# Main process of this algorithm
 def dj_algo(num_qubits, is_balanced:bool):
     # Create a Quantum Circuit (All qubits are |0>)
     circuit = QuantumCircuit(num_qubits+1)
-    
+
+    # Initalization (Make the target qubit |1>)
     circuit.add_X_gate(num_qubits)
     circuit.add_H_gate(num_qubits)
     
@@ -47,5 +49,10 @@ if __name__ == '__main__':
     
     for qubit, cnt in sampling_result.items():
         fnc_arg_cnt += Counter({qubit & 2**num_qubits-1: cnt})
-    print(fnc_arg_cnt)
+    key = list(fnc_arg_cnt.keys())
+    
+    if len(key)==1 and key[0]==0:
+        print(f'Result: {fnc_arg_cnt}\nConstant function')
+    else:
+        print(f'Result: {fnc_arg_cnt}\nBalance function')
     
