@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jul  7 17:12:33 2024
-
-@author: User
-"""
-
 from quri_parts.circuit import QuantumCircuit, NonParametricQuantumCircuit
 from quri_parts.qulacs.sampler import create_qulacs_vector_sampler
 from quri_parts.circuit.utils.circuit_drawer import draw_circuit
